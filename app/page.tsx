@@ -1,8 +1,5 @@
-import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
-    <div className="flex flex-wrap gap-3">
-      <Button variant="magnetic" size="lg">Liquid Metal</Button>
-    </div>
+    <main className="min-h-screen bg-[#00000078] selection:bg-white/20"></main>
   );
 }
