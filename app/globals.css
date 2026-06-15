@@ -128,3 +128,15 @@
     @apply font-sans;
   }
 }
+
+body {
+  background: #050505;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
