@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Sans, Lora } from "next/font/google";
+import { DM_Sans, Lora, Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
+import PremiumBackground from "@/components/backgrounds/PremiumBackground";
+import { cn } from "@/lib/utils";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -12,11 +14,7 @@ const lora = Lora({
   variable: "--font-serif",
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-sans",
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Zephyr - AI App Builder",
@@ -33,8 +31,8 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={`${lora.variable} ${dmSans.variable} font-sans`}>
+      <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
+        <body className={`${lora.variable} ${geist.variable} font-sans`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -42,6 +40,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
+            {/* <PremiumBackground/> */}
             <main>{children}</main>
           </ThemeProvider>
         </body>

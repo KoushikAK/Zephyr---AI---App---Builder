@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import { Button } from "./ui/button";
+import { ThemeTogglerButton } from "./animate-ui/components/buttons/theme-toggler";
 
 export default function Header() {
   return (
@@ -68,6 +69,7 @@ export default function Header() {
           {/* RIGHT */}
           <div className="flex items-center gap-3">
             <Show when="signed-in">
+              <ThemeTogglerButton className="rounded-2xl" />
               <Link
                 href="/projects"
                 className="
