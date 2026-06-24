@@ -37,7 +37,7 @@ export const PRICING_PLANS = [
     description: "For developers who build regularly.",
     price: 9,
     featured: true,
-    planId: "cplan_3DvxGsOeYA5bpJzGWPi8o7wScRD",
+    planId: "cplan_3Fa0S7HSEKsK4mroGTRWtodJVgK",
     active: false,
     features: [
       "50 generations / month",
@@ -52,7 +52,7 @@ export const PRICING_PLANS = [
     description: "For power users who ship fast.",
     price: 29,
     featured: false,
-    planId: "cplan_3DvxTfywwB0NyQ1iqANclgNqlq8",
+    planId: "cplan_3Fa0S7HSEKsK4mroGTRWtodJVgK",
     active: false,
     features: [
       "150 generations / month",
@@ -60,7 +60,7 @@ export const PRICING_PLANS = [
       "Live preview",
       "Export to zip",
       "Image uploads",
-      "Access to Forge Pro Agent",
+      "Access to Zephyr Pro Agent",
     ],
   },
 ] as const;

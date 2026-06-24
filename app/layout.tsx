@@ -40,7 +40,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-            {/* <PremiumBackground/> */}
             <main>{children}</main>
           </ThemeProvider>
         </body>

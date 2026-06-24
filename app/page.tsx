@@ -130,7 +130,7 @@ export default function Home() {
           <div className="flex justify-center">
             <Badge
               variant="outline"
-              className="gap-2 border-white/10 bg-white/[0.03] px-5 py-2 backdrop-blur-xl"
+              className="gap-2 border-white/10 bg-white/[0.03] px-5 py-2 backdrop-blur-xl text-blue"
             >
               <Sparkles className="h-3.5 w-3.5 text-blue-400" />
               Powered by Autonomous AI Agents
@@ -268,9 +268,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────
-   AI WORKSPACE PREVIEW
-────────────────────────────────────────────── */}
+      {/* ─────────────── AI WORKSPACE PREVIEW ────────────────── */}
 
       <section className="relative px-6 pb-36">
         <div className="mx-auto max-w-7xl">
@@ -531,9 +529,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────
-   AI WORKFORCE
-────────────────────────────────────────────── */}
+      {/*──────────────── AI WORKFORCE ───────────────── */}
 
       <section className="relative px-6 pb-36">
         <div className="mx-auto max-w-7xl">
@@ -605,9 +601,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────
-   PREMIUM BENTO GRID
-────────────────────────────────────────────── */}
+      {/* ──────────── PREMIUM BENTO GRID ──────────────────── */}
 
       <section className="relative px-6 pb-36">
         <div className="mx-auto max-w-7xl">
@@ -703,9 +697,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────
-   HOW IT WORKS 2.0
-────────────────────────────────────────────── */}
+      {/* ───────── HOW IT WORKS 2.0 ──────────────────── */}
 
       <section className="relative px-6 pb-36">
         <div className="mx-auto max-w-5xl">
@@ -759,9 +751,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────
-   PRICING
-────────────────────────────────────────────── */}
+      {/* ─────────────── PRICING ───────────────── */}
 
       <section className="relative px-6 pb-40">
         <div className="mx-auto max-w-7xl">
@@ -779,7 +769,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-6 lg:grid-cols-3 items-stretch">
             {PRICING_PLANS.map((plan) => {
               const planOrder: Record<string, number> = {
                 free: 0,
@@ -807,7 +797,7 @@ export default function Home() {
                 <div
                   key={plan.key}
                   className={cn(
-                    "relative flex flex-col overflow-hidden rounded-[32px] border p-8 backdrop-blur-xl transition-all duration-300",
+                    "relative flex flex-col justify-between overflow-hidden rounded-[32px] border p-8 backdrop-blur-xl transition-all duration-300",
 
                     plan.featured
                       ? "border-blue-500/30 bg-blue-500/[0.05]"
@@ -832,7 +822,6 @@ export default function Home() {
                     <p className="mt-3 text-sm leading-relaxed text-white/45">
                       {plan.description}
                     </p>
-
                     <div className="mt-8 flex items-end gap-2">
                       <span className="text-6xl font-bold tracking-tight">
                         {plan.price === 0 ? "$0" : <>${plan.price}</>}
@@ -854,50 +843,51 @@ export default function Home() {
                         </div>
                       ))}
                     </div>
+                  </div> {/* <-- Moved the closing tag here to separate content from buttons */}
 
-                    <div className="mt-auto pt-10">
-                      {isActive ? (
-                        <Button disabled className="w-full rounded-full">
-                          Current Plan
+                  {/* Added mt-auto here to level all action wrappers perfectly */}
+                  <div className="mt-auto pt-10 relative z-10"> 
+                    {isActive ? (
+                      <Button disabled className="w-full rounded-full">
+                        Current Plan
+                      </Button>
+                    ) : plan.price === 0 ? (
+                      <SignInButton mode="modal">
+                        <Button
+                          variant="outline"
+                          className="w-full rounded-full"
+                        >
+                          Get Started Free
                         </Button>
-                      ) : plan.price === 0 ? (
-                        <SignInButton mode="modal">
-                          <Button
-                            variant="outline"
-                            className="w-full rounded-full"
-                          >
-                            Get Started Free
-                          </Button>
-                        </SignInButton>
-                      ) : isSignedIn ? (
-                        <CheckoutButton planId={plan.planId} planPeriod="month">
-                          <Button
-                            className={cn(
-                              "w-full rounded-full cursor-pointer",
+                      </SignInButton>
+                    ) : isSignedIn ? (
+                      <CheckoutButton planId={plan.planId} planPeriod="month">
+                        <Button
+                          className={cn(
+                            "w-full rounded-full cursor-pointer",
 
-                              plan.featured && "bg-blue-500 hover:bg-blue-400",
-                            )}
-                          >
-                            {isDowngrade ? "Downgrade" : "Upgrade"}
+                            plan.featured && "bg-blue-500 hover:bg-blue-400",
+                          )}
+                        >
+                          {isDowngrade ? "Downgrade" : "Upgrade"}
 
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Button>
-                        </CheckoutButton>
-                      ) : (
-                        <SignInButton mode="modal">
-                          <Button
-                            className={cn(
-                              "w-full rounded-full",
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </CheckoutButton>
+                    ) : (
+                      <SignInButton mode="modal">
+                        <Button
+                          className={cn(
+                            "w-full rounded-full",
 
-                              plan.featured && "bg-blue-500 hover:bg-blue-400",
-                            )}
-                          >
-                            Get Started
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Button>
-                        </SignInButton>
-                      )}
-                    </div>
+                            plan.featured && "bg-blue-500 hover:bg-blue-400",
+                          )}
+                        >
+                          Get Started
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </SignInButton>
+                    )}
                   </div>
                 </div>
               );
@@ -906,9 +896,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────
-   ENTERPRISE CTA
-────────────────────────────────────────────── */}
+      {/* ────────────────── ENTERPRISE CTA ─────────────────────── */}
 
       <section className="relative px-6 pb-40">
         <div className="mx-auto max-w-6xl overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] p-16 backdrop-blur-xl">
@@ -943,7 +931,7 @@ export default function Home() {
               <Button
                 variant="outline"
                 size="lg"
-                className="h-14 rounded-full px-10 text-base"
+                className="h-14 rounded-full px-10 text-base text-black"
               >
                 Watch Demo
               </Button>
@@ -972,33 +960,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────
-   FOOTER
-────────────────────────────────────────────── */}
-
-      {/* <footer className="border-t border-white/10 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-6 text-center md:flex-row">
-          <div>
-            <span className="bg-gradient-to-r from-white via-blue-300 to-blue-500 bg-clip-text text-2xl font-bold text-transparent">
-              Zephyr
-            </span>
-
-            <p className="mt-2 text-sm text-white/35">
-              Autonomous software creation platform.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-8 text-sm text-white/35">
-            <button className="hover:text-white">Features</button>
-
-            <button className="hover:text-white">Pricing</button>
-
-            <button className="hover:text-white">Docs</button>
-
-            <button className="hover:text-white">Contact</button>
-          </div>
-        </div>
-      </footer> */}
+      {/* ───────────── FOOTER ─────────────────── */}
       <footer className="relative overflow-hidden border-t border-white/10">
         {/* Background Glow */}
 
