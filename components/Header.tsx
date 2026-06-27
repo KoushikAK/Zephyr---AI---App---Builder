@@ -9,7 +9,7 @@ export default async function Header() {
   const user = await checkUser();
 
   return (
-    <header className={cn("fixed inset-x-0 top-6 z-50 flex justify-center px-4 transition-all duration-300 ease-out")}>
+    <header className={cn("fixed inset-x-0 top-2 z-50 flex justify-center px-4 transition-all duration-300 ease-out")}>
       <nav className="relative w-full max-w-7xl">
         <div className="absolute -inset-10 bg-gradient-to-r from-blue-600/10 via-violet-600/5 to-cyan-600/10 blur-[100px] pointer-events-none animate-pulse" />
 

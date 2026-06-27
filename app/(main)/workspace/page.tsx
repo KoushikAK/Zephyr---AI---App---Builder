@@ -1,6 +1,5 @@
-
 import { getWorkspaceUser, getWorkspaceById } from "@/actions/workspace";
-import WorkspaceClient from "@/components/WorkspaceClient";
+import {WorkspaceClient}  from "@/components/WorkspaceClient";
 
 interface WorkspacePageProps {
   searchParams: Promise<{ prompt?: string; id?: string }>;
@@ -19,13 +18,12 @@ export default async function WorkspacePage({
   }
 
   return (
-    // <WorkspaceClient
-    //   initialPrompt={prompt ?? null}
-    //   workspace={workspace}
-    //   userCredits={user.credits}
-    //   userId={user.id}
-    //   userPlan={user.plan}
-    // />
-    <div>Hello</div>
+    <WorkspaceClient
+      initialPrompt={prompt ?? null}
+      workspace={workspace}
+      userCredits={user.credits}
+      userId={user.id}
+      userPlan={user.plan}
+    />
   );
 }
